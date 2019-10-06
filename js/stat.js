@@ -53,8 +53,9 @@ window.renderStatistics = function (ctx, names, times) {
         ctx.fillRect(CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y + (MAX_HEIGHT_BAR - currentLineHeight) + HEIGHT_TITLE_TEXT, BAR_WIDTH, currentLineHeight);
         ctx.fillStyle = '#000';
         ctx.fillText(names[i], CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y + MAX_HEIGHT_BAR + FONT_GAP + HEIGHT_TITLE_TEXT);
+        ctx.fillText(currentLineHeight, CLOUD_X + GAP + (GAP + BAR_WIDTH) * i, CLOUD_Y - FONT_GAP + HEIGHT_TITLE_TEXT);
     }
 
-    ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + FONT_GAP);
-    ctx.fillText('Список результатов:', CLOUD_X + GAP, CLOUD_Y + FONT_GAP + TEXT_HEIGHT);
+    ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y);
+    ctx.fillText('Список результатов:', CLOUD_X + GAP, CLOUD_Y + TEXT_HEIGHT);
 };
