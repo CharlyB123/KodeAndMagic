@@ -870,3 +870,25 @@ input[type=radio]:checked + .review-mark-label {
   left: 0;
   top: 0;
 }
+
+.help_popup {
+    position: fixed;
+    font-size: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    background: #fff;
+    z-index: 10;
+    padding: 10px;
+}
+
+.help_popup.__error {
+    border: 1px solid #ff0013;
+    color: #ff0013;
+}
+
+.help_popup.__success {
+    border: 1px solid #00ff19;
+    color: #00ff19;
+}

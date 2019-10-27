@@ -29,46 +29,25 @@
         return array[arrayRandomNumber]
     };
 
-    var wizards = [
-        {
-            name: generateRandomElement(window.static.WIZARD_NAMES, window.static.WIZARD_SURNAME),
-            coatColor: generateRandomElement(window.static.WIZARD_COAT_COLOR),
-            eyes: generateRandomElement(window.static.WIZARD_EYES_COLOR)
-        },
-        {
-            name: generateRandomElement(window.static.WIZARD_NAMES, window.static.WIZARD_SURNAME),
-            coatColor: generateRandomElement(window.static.WIZARD_COAT_COLOR),
-            eyes: generateRandomElement(window.static.WIZARD_EYES_COLOR)
-        },
-        {
-            name: generateRandomElement(window.static.WIZARD_NAMES, window.static.WIZARD_SURNAME),
-            coatColor: generateRandomElement(window.static.WIZARD_COAT_COLOR),
-            eyes: generateRandomElement(window.static.WIZARD_EYES_COLOR)
-        },
-        {
-            name: generateRandomElement(window.static.WIZARD_NAMES, window.static.WIZARD_SURNAME),
-            coatColor: generateRandomElement(window.static.WIZARD_COAT_COLOR),
-            eyes: generateRandomElement(window.static.WIZARD_EYES_COLOR)
+    var loadSuccess = function (data) {
+        var fragment = document.createDocumentFragment();
+        for (var i = 0; i < 4; i++) {
+            fragment.appendChild(renderWizard(data[i]));
         }
-    ];
+        similarListElement.appendChild(fragment);
+    };
+
+    window.backend.load(loadSuccess, window.help.popup);
 
     var renderWizard = function (wizard) {
         var wizardElement = similarWizardTemplate.cloneNode(true);
 
         wizardElement.querySelector('.setup-similar-label').textContent = wizard.name;
-        wizardElement.querySelector('.wizard-coat').style.fill = wizard.coatColor;
-        wizardElement.querySelector('.wizard-eyes').style.fill = wizard.eyes;
+        wizardElement.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
+        wizardElement.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
 
         return wizardElement;
     };
-
-    var fragment = document.createDocumentFragment();
-    for (var i = 0; i < wizards.length; i++) {
-        fragment.appendChild(renderWizard(wizards[i]));
-    }
-    similarListElement.appendChild(fragment);
-
-// userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
     wizardCoat.addEventListener('click', function (evt) {
         var colorCoat = generateRandomElement(window.static.WIZARD_COAT_COLOR);

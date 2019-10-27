@@ -9,7 +9,7 @@
 
   var userNameInput = userDialog.querySelector('.setup-user-name');
   var inputNameFocus = false; // флаг фокусировки на поле ввода имени
-
+  userDialog.querySelector('.setup-similar').classList.remove('hidden');
 
 
   setupOpen.addEventListener('click', function () {
@@ -102,6 +102,10 @@
     resetCoordsDialog();
   };
 
+  var saveUserPopup = function (data, theme) {
+    window.help.popup('Успех!', theme);
+  };
+
   setupOpen.addEventListener('click', openUserPopup);
   setupClose.addEventListener('click', closeUserPopup);
 
@@ -131,4 +135,9 @@
       userNameInput.setCustomValidity(' ');
     }
   });
+
+  setupForm.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(setupForm), saveUserPopup, window.help.popup);
+    evt.preventDefault();
+  })
 })();
