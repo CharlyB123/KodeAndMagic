@@ -883,7 +883,7 @@ input[type=radio]:checked + .review-mark-label {
     padding: 10px;
 }
 
-.help_popup.__error {
+.help_popup.__danger {
     border: 1px solid #ff0013;
     color: #ff0013;
 }
